@@ -1,0 +1,21 @@
+m cxxConstructExpr(isExpansionInMainFile()).bind("x")
+
+
+m cxxConstructExpr(isExpansionInMainFile(), hasDeclaration(cxxMethodDecl(hasName("string")))).bind("x")
+
+
+m cxxConstructExpr(isExpansionInMainFile()).bind("x")
+
+
+m cxxConstructExpr(isExpansionInMainFile()).bind("x")
+
+m
+
+//Match all std::string constuctors
+
+ cxxConstructExpr(hasDeclaration(cxxMethodDecl(hasName("basic_string")))).bind("aString")
+
+
+
+m cxxConstructExpr(isExpansionInMainFile(), hasDeclaration(cxxMethodDecl(hasName("basic_string")))).bind("aString")
+
