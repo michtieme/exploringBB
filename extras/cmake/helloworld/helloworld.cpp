@@ -10,10 +10,9 @@ QString(const char* sz) {}
 
 
 
-void printString(const QString& stringToPrint)
+void printString(const QString& /*stringToPrint*/)
 {
-
-        std::cout << stringToPrint << "\n";
+//FIXME: Clang query doesn't like this:        std::cout << stringToPrint << "\n";
 }
 
 const char* tr(const char* pStringToTranslate)
