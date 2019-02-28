@@ -1,7 +1,16 @@
 #include <iostream>
 #include <string>
 
-void printString(const std::string& stringToPrint)
+class QString
+{
+public:
+QString() {}
+QString(const char* sz) {}
+};
+
+
+
+void printString(const QString& stringToPrint)
 {
 
         std::cout << stringToPrint << "\n";
@@ -20,12 +29,16 @@ constexpr const char* no_tr(const char* pStringToTranslate)
 
 void printSomeFunc()
 {
-        std::string myTranslation(tr("Some String"));
-        std::string myStringA{"Some String A"};
-        std::string myStringB = "Some string B";
+        QString myTranslation(tr("Some String"));
+        QString myStringA{"Some String A"};
+        QString myStringB = "Some string B";
+
+	std::string aStdStringA{"Some string"};
+	std::string aStdStringB("Some string");
+	std::string aStdStringC(tr("Some string"));
 
 
-        std::string myUntranslatedString(no_tr("No translation"));
+        QString myUntranslatedString(no_tr("No translation"));
 
         printString(myTranslation);
         printString(myStringA);
