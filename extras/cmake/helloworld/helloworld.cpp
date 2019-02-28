@@ -28,18 +28,21 @@ constexpr const char* no_tr(const char* pStringToTranslate)
 
 void printSomeFunc()
 {
-        QString myTranslation(tr("Some String"));
+	
+	//Should match because the string literals are not wrapped in either tr() or no_tr()
         QString myStringA{"Some String A"};
         QString myStringB = "Some string B";
 
-	std::string aStdStringA{"Some string"};
-	std::string aStdStringB("Some string");
-	std::string aStdStringC(tr("Some string"));
-
-
+	//Should NOT match because the literals are wrapped in tr() or no_tr()
+        QString myTranslation(tr("Some String"));
         QString myUntranslatedString(no_tr("No translation"));
 
-        printString(myTranslation);
+	//Should NOT match because the type is std::string, we only want to match QString
+	std::string aStdStringA{"Some string"};
+	std::string aStdStringB("Some string"); 
+	std::string aStdStringC(tr("Some string"));
+        
+	printString(myTranslation);
         printString(myStringA);
         printString(myStringB);
         printString(myUntranslatedString);
